@@ -23,13 +23,6 @@ class Board extends React.Component {
     }
 
     render() {
-        let renderString = [];
-        for (let loopCol=0; loopCol<3; loopCol++){
-            for (let loopRow=0; loopRow<3; loopRow++) {
-                renderString.push(this.renderSquare(loopCol+loopRow));
-            }
-        }
-
         let tmp=0;
         return (
             <div>
