@@ -23,23 +23,31 @@ class Board extends React.Component {
     }
 
     render() {
+        let renderString = [];
+        for (let loopCol=0; loopCol<3; loopCol++){
+            for (let loopRow=0; loopRow<3; loopRow++) {
+                renderString.push(this.renderSquare(loopCol+loopRow));
+            }
+        }
+
+        let tmp=0;
         return (
             <div>
-                <div className="board-row">
-                {this.renderSquare(0)}
-                {this.renderSquare(1)}
-                {this.renderSquare(2)}
-                </div>
-                <div className="board-row">
-                {this.renderSquare(3)}
-                {this.renderSquare(4)}
-                {this.renderSquare(5)}
-                </div>
-                <div className="board-row">
-                {this.renderSquare(6)}
-                {this.renderSquare(7)}
-                {this.renderSquare(8)}
-                </div>
+                {
+                    Array(3).fill(0).map((val) => {
+                        return(
+                            <div className="board-row">
+                                {
+                                    Array(3).fill(0).map((val2) => {
+                                        return(
+                                            this.renderSquare(tmp++)
+                                        )
+                                    })
+                                }
+                            </div>
+                        )
+                    })
+                }
             </div>
         );
     }
@@ -108,8 +116,8 @@ class Game extends React.Component {
             'Go to game start';
             if (move === this.state.stepNumber) {
                 return (
-                    <li id="current move" key={move}>
-                        <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                    <li id="current-id" key={move}>
+                        <button id="current-move" onClick={() => this.jumpTo(move)}>{desc}</button>
                     </li>
                 );
             } else {

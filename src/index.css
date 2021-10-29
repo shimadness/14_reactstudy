@@ -49,6 +49,10 @@ body {
     margin-left: 20px;
   }
   
-  #test {
+  #current-id {
+    font-weight: bold;
+  }
+  
+  #current-move {
     font-weight: bold;
   }
